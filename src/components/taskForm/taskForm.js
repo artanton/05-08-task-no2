@@ -29,7 +29,7 @@ export const TaskForm = ({ parentId, subLevel, onClose }) => {
     //   return;
     // }
     if (!parentId){
-      parentId = 0;
+      parentId = "0";
       subLevel = 0 }
       else{
        subLevel+=1; 
@@ -47,6 +47,8 @@ export const TaskForm = ({ parentId, subLevel, onClose }) => {
     if (onClose) {  
       onClose();  
     }
+   
+    
   };
   return (
     <Formik

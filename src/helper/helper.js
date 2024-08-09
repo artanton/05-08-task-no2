@@ -30,10 +30,26 @@ export function formatToString(date) {
 
 //  random color for level stylization func
 
+// export function getRandomHexColor() {
+//   return `#${Math.floor(Math.random() * 16777215)
+//     .toString(16)
+//     .padStart(6, 0)}`;
+// }
 export function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
+  
+  const getRandomChannelValue = () => Math.floor(Math.random() * 128) + 128;
+
+  // Генерация значений для каждого канала цвета
+  const r = getRandomChannelValue();
+  const g = getRandomChannelValue();
+  const b = getRandomChannelValue();
+
+  // Преобразование в формат HEX
+  const rgbToHex = (r, g, b) => `#${[r, g, b]
+    .map(value => value.toString(16).padStart(2, '0'))
+    .join('')}`;
+
+  return rgbToHex(r, g, b);
 }
 
 //  unic colors for subtask level assignment func

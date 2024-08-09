@@ -3,7 +3,7 @@
 // import { ModalButton, TextInput } from './editModalStyled';
 import { TaskForm } from 'components/taskForm/taskForm';
 
-export const AddSubTaskModal = ({ taskId, onClose, parentId, subLevel, }) => {
+export const AddSubTaskModal = ({ taskId, onClose, subLevel, }) => {
  
 
   return (

@@ -9,10 +9,10 @@ const renderTasks = (tasks, taskMap, level = 0) => {
   return (
     <ul>
       {tasks.map(task => (
-        <li key={task.id} style={{ paddingLeft: 20 }}>
+        <li key={task._id} style={{ paddingLeft: 20 }}>
           <TaskItem task={task} color={getColorForLevel(level)} />
-          {taskMap[task.id] &&
-            renderTasks(taskMap[task.id], taskMap, level + 1)}
+          {taskMap[task._id] &&
+            renderTasks(taskMap[task._id], taskMap, level + 1)}
         </li>
       ))}
     </ul>
