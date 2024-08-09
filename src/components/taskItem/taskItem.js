@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export const TaskItem = ({ task, color }) => {
-  const { id, text, date, parentId, subLevel } = task;
+  const { _id, text, date, parentId, subLevel } = task;
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
@@ -39,21 +39,21 @@ export const TaskItem = ({ task, color }) => {
 
   const openSubTaskModal = () => {
     setModalContent(
-      <AddSubTaskModal  taskId={id} parentId = {parentId} subLevel={subLevel} onClose={closeModal} />
+      <AddSubTaskModal  taskId={_id} parentId = {parentId} subLevel={subLevel} onClose={closeModal} />
     );
     openModal();
   };
 
   const openEditModal = () => {
     setModalContent(
-      <EditTaskModal taskId={id} initialText={text} onClose={closeModal} />
+      <EditTaskModal taskId={_id} initialText={text} onClose={closeModal} />
     );
     openModal();
   };
 
   const openDeleteModal = () => {
     setModalContent(
-      <DeleteConfirmationModal taskId={id} onClose={closeModal} />
+      <DeleteConfirmationModal taskId={_id} onClose={closeModal} />
     );
     openModal();
   };
@@ -65,12 +65,10 @@ export const TaskItem = ({ task, color }) => {
       <TaskRow >
         <Box sx={{ width: 1 }} >
           <Box display="grid" gridTemplateColumns="repeat(13, 1fr)" gap={1} >
-            <Box gridColumn="span 1">
-              <Item style={{ backgroundColor: `${color}`}}>{id}</Item>
-            </Box>
+           
 
-            <Box gridColumn="span 5">
-              <Item>{text}</Item>
+            <Box gridColumn="span 6">
+              <Item style={{ backgroundColor: `${color}`}}>{text}</Item>
             </Box>
             <Box gridColumn="span 3">
               <Item>{formattedDate}</Item>

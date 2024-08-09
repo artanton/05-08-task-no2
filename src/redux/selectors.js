@@ -2,7 +2,7 @@
 
 export const selectTask = state => state.task.tasks;
 
-export const selectFilter = state => state.filt.filter;
+// export const selectFilter = state => state.filt.filter;
 
 export const selectIsLoading = state => state.task.isLoading;
 

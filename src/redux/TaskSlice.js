@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { fetchTasks, deleteTask, addTask, updateTask } from './operators';
 
+
 const taskSlice = createSlice({
   name: 'tasks',
   initialState: {
@@ -51,11 +52,11 @@ const taskSlice = createSlice({
       .addCase(updateTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const { id, text } = action.payload;
+        const { _id, text } = action.payload;
 
         if (text) {
           const taskToUpdate = state.tasks.find(task => {
-            return task.id === id;
+            return task._id === _id;
           });
 
           if (taskToUpdate) {
@@ -76,11 +77,13 @@ const taskSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        
         const index = state.tasks.findIndex(
-          tasks => tasks.id === action.payload.id
+          tasks => tasks._id === action.payload.id
         );
         state.tasks.splice(index, 1);
       })
+      
       .addCase(deleteTask.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
